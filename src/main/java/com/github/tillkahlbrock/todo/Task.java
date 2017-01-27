@@ -22,4 +22,6 @@ class Task {
     {
         this.active = false;
     }
+
+    void activate() { this.active = true; }
 }
