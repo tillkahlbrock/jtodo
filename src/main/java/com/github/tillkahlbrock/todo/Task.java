@@ -14,7 +14,7 @@ class Task {
         this.id = UUID.randomUUID().toString();
     }
 
-    String title() {
+    public String title() {
         return title;
     }
 
