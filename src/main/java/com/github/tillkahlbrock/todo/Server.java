@@ -7,8 +7,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.List;
-
 import static spark.Spark.get;
 import static spark.Spark.port;
 
@@ -24,12 +22,7 @@ public class Server
         ApplicationContext context = new AnnotationConfigApplicationContext(Server.class);
         TodoList todoList = context.getBean(TodoList.class);
         logger.trace("Starting to serve...");
-        get("/tasks", (req, res) -> listToJsonString(todoList.allTasks()));
+        get("/tasks", (req, res) -> todoList.toJson());
         logger.trace("Done!");
-    }
-
-    private static String listToJsonString(List list)
-    {
-        return "{[\"some\": \"thing\"]}";
     }
 }

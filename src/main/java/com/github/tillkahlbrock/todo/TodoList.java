@@ -25,4 +25,13 @@ class TodoList {
     {
         this.tasks = this.tasks.stream().filter(task -> !task.getId().equals(taskId)).collect(Collectors.toList());
     }
+
+    String toJson()
+    {
+        String jsonElements = this.tasks
+                .stream()
+                .map(task -> "{\"id\":\"" + task.getId() + "\",\"title\":\"" + task.title() + "\"}")
+                .collect(Collectors.joining(","));
+        return "{\"tasks\":[" + jsonElements + "]}";
+    }
 }

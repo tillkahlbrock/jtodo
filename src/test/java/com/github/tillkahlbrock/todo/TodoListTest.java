@@ -25,6 +25,17 @@ public class TodoListTest
         assertEquals(1, todoList.allTasks().size());
     }
 
+    @Test
+    void itShouldConvertTheTaskListToJson()
+    {
+        TodoList todoList = this.subject();
+        String task1Id = todoList.addTask("Do something!");
+        String task2Id = todoList.addTask("Do something else!");
+
+        String expectedJson = "{\"tasks\":[{\"id\":\"" + task1Id + "\",\"title\":\"Do something!\"},{\"id\":\"" + task2Id + "\",\"title\":\"Do something else!\"}]}";
+        assertEquals(expectedJson, todoList.toJson());
+    }
+
     private TodoList subject() {
         return new TodoList();
     }
