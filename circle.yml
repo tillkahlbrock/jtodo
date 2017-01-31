@@ -1,0 +1,11 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+
+test:
+  override:
+    - docker run --rm --name gradle -v $(pwd):/root frekele/gradle gradle test
