@@ -14,7 +14,7 @@ class Task {
         this.id = UUID.randomUUID().toString();
     }
 
-    public String title() {
+    String title() {
         return title;
     }
 
@@ -29,7 +29,7 @@ class Task {
 
     void activate() { this.active = true; }
 
-    public String getId() {
+    String getId() {
         return this.id;
     }
 }
