@@ -8,4 +8,13 @@ dependencies:
 
 test:
   override:
-    - docker run --rm --name gradle -v $(pwd):/root frekele/gradle gradle test
+    - docker run --rm=false --name gradle-test -v $(pwd):/root frekele/gradle gradle test
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker run --rm=false --name gradle-jar -v $(pwd):/root frekele/gradle gradle jar
+      - docker build --rm=false -t till/jtodo .
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push till/jtodo
