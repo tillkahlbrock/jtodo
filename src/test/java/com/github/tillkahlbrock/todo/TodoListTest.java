@@ -32,7 +32,7 @@ public class TodoListTest
         String task1Id = todoList.addTask("Do something!");
         String task2Id = todoList.addTask("Do something else!");
 
-        String expectedJson = "{\"tasks\":[{\"id\":\"" + task1Id + "\",\"title\":\"Do something!\"},{\"id\":\"" + task2Id + "\",\"title\":\"Do something else!\"}]}";
+        String expectedJson = "{\"tasks\":[{\"id\":\"" + task1Id + "\",\"title\":\"Do something!\",\"completed\":true},{\"id\":\"" + task2Id + "\",\"title\":\"Do something else!\",\"completed\":true}]}";
         assertEquals(expectedJson, todoList.toJson());
     }
 

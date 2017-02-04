@@ -30,7 +30,7 @@ class TodoList {
     {
         String jsonElements = this.tasks
                 .stream()
-                .map(task -> "{\"id\":\"" + task.getId() + "\",\"title\":\"" + task.title() + "\"}")
+                .map(task -> "{\"id\":\"" + task.getId() + "\",\"title\":\"" + task.title() + "\",\"completed\":" + (task.isActive() ? "true" : "false") + "}")
                 .collect(Collectors.joining(","));
         return "{\"tasks\":[" + jsonElements + "]}";
     }
