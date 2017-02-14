@@ -22,6 +22,7 @@ public class Server
         logger.trace("Starting to serve...");
         get("/tasks", (req, res) -> todoList.toJson());
         post("/task", (req, res) -> todoList.addTask(req.queryParams("title")));
+        post("/task", (req, res) -> todoList.completeTask(req.queryParams("id")));
         logger.trace("Done!");
     }
 }

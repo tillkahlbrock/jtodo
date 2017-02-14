@@ -36,6 +36,18 @@ public class TodoListTest
         assertEquals(expectedJson, todoList.toJson());
     }
 
+    @Test
+    void itShouldCompleteATask()
+    {
+        TodoList todoList = this.subject();
+        String task1Id = todoList.addTask("Do something!");
+        String task2Id = todoList.addTask("Do something else!");
+
+        todoList.completeTask(task2Id);
+
+        assertEquals(1, todoList.openTasks().size());
+    }
+
     private TodoList subject() {
         return new TodoList();
     }
